@@ -14,12 +14,12 @@ uint32_t now = 0;
 uint32_t lastSamplingPeriod = 0;
 STM32RTC& rtc = STM32RTC::getInstance();
 static byte seconds = 0;
-static byte minutes = 0;
-static byte hours = 0;
+static byte minutes = 21;
+static byte hours = 10;
 static byte weekDay = 1;
-static byte day = 7;
-static byte month = 12;
-static byte year = 21;
+static byte day = 30;
+static byte month = 3;
+static byte year = 9;
 static uint32_t atime = 1;
 
 /*******************************************************
