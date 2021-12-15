@@ -183,26 +183,26 @@ const char* power_supply_str[] = {"Battery", "Power Line"};
   * \def LED_BUILTIN_PIN 
   * LED builtin pin.
   */
-#define LED_BUILTIN_PIN                 13
+#define LED_BUILTIN_PIN                 PC13
 
 #ifdef RGB_LED_ENABLED
     /**
     * \def LED_RGB_RED_PIN
     * Red RGB LED device pin.
     */
-    #define LED_RGB_RED_PIN             8
+    #define LED_RGB_RED_PIN             PA8
 
     /**
     * \def LED_RGB_GREEN_PIN 
     * Green RGB LED device pin.
     */
-    #define LED_RGB_GREEN_PIN           9
+    #define LED_RGB_GREEN_PIN           PA9
 
     /**
     * \def LED_RGB_BLUE_PIN
     * Blue RGB LED device pin.
     */
-    #define LED_RGB_BLUE_PIN            10
+    #define LED_RGB_BLUE_PIN            PA10
 #endif
 
 #ifdef SENSOR_DHT_ENABLED
@@ -210,7 +210,7 @@ const char* power_supply_str[] = {"Battery", "Power Line"};
     * \def DHT_PIN 
     * DHT sensor pin.
     */
-    #define DHT_PIN                     5
+    #define DHT_PIN                     PB12
 
     /**
     * \def DHT_TYPE 
@@ -292,12 +292,14 @@ const char* power_supply_str[] = {"Battery", "Power Line"};
 /*******************************************************
  *                  SYSTEM PARAMETERS
  *******************************************************/
-const unsigned long systemPeriod = 1000;                        /**< System run period (in ms). */
-const unsigned long samplingPeriod = 1 * systemPeriod;          /**< Sampling period (in ms). */
-const unsigned long txPeriod = 5 * samplingPeriod;              /**< Transmission period (in ms). */
-const float pi = 3.1415926;                                     /**< PI used in anemometer computation. */
-const float anemometer_radius = 0.147;                          /**< Anemometer radius (in m). */
-const unsigned long error_reset_period = 60 * systemPeriod;      /**< Error reset period (in ms). */
+const unsigned long wd_timeout = 20000;                                     /**< Watch Dog Timeout (in ms). */
+const uint8_t rtc_offset = 2;                                               /**< RTC offset (in sec). */
+const uint8_t samplingPeriod_WDT = 1;                                       /**< Sampling period (in multiple of wd_timeout). */
+const unsigned long samplingPeriod = samplingPeriod_WDT * wd_timeout;       /**< Sampling period (in ms). */       
+const uint8_t txPeriod_samplingPeriod = 5;                                  /**< Transmission period (in multiple of samplingPeriod). */
+const unsigned long txPeriod = txPeriod_samplingPeriod * samplingPeriod;    /**< Transmission period (in ms). */
+const float pi = 3.1415926;                                                 /**< PI used in anemometer computation. */
+const float anemometer_radius = 0.147;                                      /**< Anemometer radius (in m). */
 
 /*********************************************
  *             TTN PARAMETERS
