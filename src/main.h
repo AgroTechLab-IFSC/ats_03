@@ -97,6 +97,7 @@ static uint32_t atime = 1;
 /*******************************************************
  *                FUNCTIONS PROTOTYPES
  *******************************************************/
+void resetSensorDataStruct();
 #ifdef SERIAL_DEBUG_ENABLED
     void printInitInfo();
     void printAverageValues();
@@ -390,5 +391,55 @@ uint8_t getDHTHumidity() {
     }
 }
 #endif
+
+void resetSensorDataStruct() {
+    #ifdef SENSOR_DHT_ENABLED
+        sensorsData.airTemp = 0.0f;
+        sensorsData.airTempCount = 0;
+        sensorsData.airHumid = 0.0f;
+        sensorsData.airHumidCount = 0;
+    #endif
+    // #ifdef SENSOR_LIGHT_ENABLED
+    //     sensorsData.light = 0;
+    //     sensorsData.lightCount = 0;
+    // #endif
+    // #ifdef SENSOR_UV_ENABLED
+    //     sensorsData.uvVoltage = 0;
+    //     sensorsData.uvVoltageCount = 0;
+    // #endif    
+    // #ifdef SENSOR_SOIL_TEMP_ENABLED
+    //     sensorsData.soilTemp = 0.0f;
+    //     sensorsData.soilTempCount = 0;
+    // #endif
+    // #ifdef SENSOR_SOIL_MOISTURE_ENABLED
+    //     sensorsData.soilMoisture = 0;
+    //     sensorsData.soilMoistureCount = 0;
+    // #endif    
+    // #ifdef SENSOR_LEAF_MOISTURE_ENABLED
+    //     sensorsData.leafMoisture = 0;
+    //     sensorsData.leafMoistureCount = 0;
+    // #endif
+    // #ifdef SENSOR_WIND_SOCK_ENABLED
+    //     sensorsData.windDirVoltage = 0.0f;
+    //     sensorsData.windDirCount = 0;
+    // #endif
+    // #ifdef SENSOR_ANEMOMETER_ENABLED
+    //     sensorsData.windSpeed = 0.0f;        
+    //     sensorsData.windSpeedCount = 0;        
+    // #endif
+    // #ifdef SENSOR_PLUVIOMETER_ENABLED
+    //     sensorsData.rainVolume = 0;            
+    // #endif
+    // #ifdef SENSOR_POWER_SUPPLY_ENABLED
+    //     sensorsData.powerSupply = 0.0f;
+    //     sensorsData.powerSupplyCount = 0;       
+    // #endif
+    // #ifdef SENSOR_PRESSURE_ENABLED
+    //     sensorsData.pressure = 0;
+    //     sensorsData.pressureCount = 0;
+    //     sensorsData.devTemp = 0.0f;
+    //     sensorsData.devTempCount = 0;
+    // #endif
+}
 
 #endif // #define __MAIN_H__

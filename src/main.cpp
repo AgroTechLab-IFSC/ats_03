@@ -178,7 +178,7 @@ void loop() {
     }
 
     #ifdef SERIAL_DEBUG_ENABLED        
-      SERIAL_DEBUG.print(F("\nStaring transmission..."));
+      SERIAL_DEBUG.print(F("\nStarting transmission..."));
       SERIAL_DEBUG.flush();
     #endif    
 
@@ -189,6 +189,11 @@ void loop() {
 
     // Simulate time to assessment
     delay(500);
+
+    // Send data values
+
+    // Reset sensor data struct    
+    resetSensorDataStruct();
 
     // Power off LEDs if power supply is POWER LINE
     if (POWER_SUPPLY == POWER_LINE) {
